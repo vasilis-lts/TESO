@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Lane from "../Components/Lane";
 import Screen from "../Components/Screen";
@@ -13,19 +13,30 @@ const Dashboard = React.memo(function Dashboard() {
     { id: 4, code: "33", length: 6.5, LicensePlate: 'Z-123-AD', SalesStop: true },
     { id: 5, code: "34", length: 6, LicensePlate: 'Z-123-AE', SalesStop: false },
     { id: 6, code: "35", length: 6.5, LicensePlate: 'Z-123-AF', SalesStop: false },
-  ];
+  ]
+
+  const [Lanes, setLanes] = useState([]);
 
   useEffect(() => {
-    console.log(jsonLanes)
+    if (localStorage.getItem('Lanes')) {
+      const lanes = JSON.parse(localStorage.getItem('Lanes'));
+      setLanes(lanes);
+    } else {
+      localStorage.setItem("Lanes", JSON.stringify(jsonLanes))
+    }
+    // eslint-disable-next-line
   }, []);
+
+  function goToDetails(lane) {
+    localStorage.setItem('LaneActive', JSON.stringify(lane));
+    history.push('/rijbaan-details')
+  }
 
   return (
     <Screen verticalAlign="flex-start">
       <div id="Dashboard" style={{ width: "100%", height: "100%" }} className="flex-col">
-        {jsonLanes.map(lane => {
-          return (
-            <Lane attr={lane} />
-          )
+        {Lanes.map(lane => {
+          return <Lane key={lane.id} attr={lane} goToDetails={() => goToDetails(lane)} />
         })}
       </div>
     </Screen>

@@ -37,7 +37,7 @@ html,body {
 .ai-center{align-items: center;}
 .vh-center{display: flex;justify-content: center;align-items: center;}
 
-/* Lane */
+/* LANE COMPONENT */
 .lane{padding: 15px 20px;border-bottom:2px solid #222;background: #f6f6e6;}
 .lane-code{padding: 5px;margin-right: 20px;}
 .lane-code-content{
@@ -63,8 +63,40 @@ html,body {
   margin-top: 2px;
 }
 
+/* LANE DETAILS */
+#LaneDetails{padding:20px;}
+#laneDetailsTitle{font-size: 5rem;font-weight: 700;}
+#terminal{
+  background: #000;
+  color: white;
+  padding: 20px;
+  height: 430px;
+  text-align: left;
+  font-size: 28px;
+  line-height: 40px;
+  margin-top: 20px;
+}
 
-@media only screen and (orientation:landscape) and (max-width:1280px) {
+.form{margin-top: 20px;}
+.input-group{margin-bottom: 10px;}
+.input-group label{font-size: 32px;text-align: left;width: 220px;}
+.input-group input{font-size: 32px;width: 250px;padding: 5px 10px;margin: 0 5px;}
+.input-group svg{font-size: 32px;padding: 5px;margin: 0 5px;border: 1px solid #222;}
+
+.lane-details-actions{margin-top: 50px;}
+.lane-details-actions button{
+  margin-top: 20px;
+  background: #2979ff;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  padding: 12px;
+}
+.lane-details-actions .back-btn{
+  margin-top: 50px;
+}
+
+/* @media only screen and (orientation:landscape) and (max-width:1280px) {
   body {
     height: 100vw;
     transform: rotate(90deg);
@@ -72,4 +104,69 @@ html,body {
   #routeContainer{
     justify-content: initial;
   }
+} */
+
+@media (max-width: 719px){
+  .Screen{
+    width: 100%!important;
+    height: 100%!important;
+  }
+
+  .lane-actions button {
+    font-size: 18px;
+    padding: 5px;
+  }
+  .lane-code-content {
+    font-size: 2rem;
+    padding: 20px 25px;
+  }
+  .lane-error-msg {
+    font-size: 16px;
+  }
+
+  #laneDetailsTitle {
+    font-size: 2rem;
+  }
+  #LaneDetails {
+    padding: 10px;
+  }
+  #terminal {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 10px;
+    flex-basis: 30%;
+  }
+
+  .input-group {
+    margin-bottom: 5px;
+  }
+  .input-group label {
+    font-size: 16px;
+    width: 110px;
+  }
+  .input-group input {
+    font-size: 16px;
+    width: 120px;
+    padding: 5px 10px;
+    margin: 0 5px;
+  }
+  .input-group svg {
+    padding: 0px 7px;
+    margin: 0 5px;
+    border: 1px solid #222;
+    width: 40px;
+    height: 36px;
+  }
+  .lane-details-actions {
+    margin-top: 20px;
+  }
+  .lane-details-actions button {
+    margin-top: 8px;
+    font-size: 22px;
+    padding: 10px;
+  }
+  .lane-details-actions .back-btn{
+    margin-top: 40px;
+  }   
 }
