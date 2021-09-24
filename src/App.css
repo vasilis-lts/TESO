@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+*{box-sizing: border-box!important;font-family: 'Open Sans', sans-serif;}
+
+html,body {
+  -webkit-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  height: 100%; margin: 0px; padding: 0px; 
+  width: 100%;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root{
+  height:100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  display: flex;
+  height: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#routeContainer{
+  display: flex;
+  width: 100%;
+  background-color: #222;
+  /* justify-content: center; */
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.flex{display: flex;}
+.flex-col{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.ai-center{align-items: center;}
+.vh-center{display: flex;justify-content: center;align-items: center;}
+
+/* Lane */
+.lane{padding: 15px 20px;border-bottom:2px solid #222;background: #f6f6e6;}
+.lane-code{padding: 5px;margin-right: 20px;}
+.lane-code-content{
+  font-size: 6rem;
+  font-weight: 700;
+  padding: 37px 48px;
+  border-radius: 50%;
+  border: 3px solid #222;
+}
+.lane-actions{flex: 1;padding-top: 7px;}
+.lane-actions button{
+  background-color: #2979ff;
+  font-size: 36px;
+  font-weight: 700;
   color: white;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+.lane-error-msg{
+  color: #ff1744;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 2px;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (orientation:landscape) and (max-width:1280px) {
+  body {
+    height: 100vw;
+    transform: rotate(90deg);
   }
-  to {
-    transform: rotate(360deg);
+  #routeContainer{
+    justify-content: initial;
   }
 }
