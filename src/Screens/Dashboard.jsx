@@ -23,6 +23,7 @@ const Dashboard = React.memo(function Dashboard() {
       setLanes(lanes);
     } else {
       localStorage.setItem("Lanes", JSON.stringify(jsonLanes))
+      setLanes(jsonLanes);
     }
     // eslint-disable-next-line
   }, []);
