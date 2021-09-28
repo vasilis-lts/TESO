@@ -12,7 +12,6 @@ const Dashboard = React.memo(function Dashboard() {
     { id: 3, code: "27", length: 6, LicensePlate: 'Z-123-AC', SalesStop: false },
     { id: 4, code: "33", length: 6.5, LicensePlate: 'Z-123-AD', SalesStop: true },
     { id: 5, code: "34", length: 6, LicensePlate: 'Z-123-AE', SalesStop: false },
-    { id: 6, code: "35", length: 6.5, LicensePlate: 'Z-123-AF', SalesStop: false },
   ]
 
   const [Lanes, setLanes] = useState([]);

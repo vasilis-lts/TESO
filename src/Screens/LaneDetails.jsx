@@ -57,7 +57,7 @@ function LaneDetails() {
       lanes[activeLaneIndex].length = length;
       setCanEditLength(false);
     } else {
-      let licensePlate = LicensePlate ? LicensePlate : 0;
+      let licensePlate = LicensePlate ? LicensePlate : "";
       lanes[activeLaneIndex].LicensePlate = licensePlate;
       setCanEditLicensePlate(false);
     }
