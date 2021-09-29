@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import Screen from "../Components/Screen";
 import { MdEdit, MdCancel } from 'react-icons/md'
@@ -6,6 +6,8 @@ import { HiOutlineSave } from 'react-icons/hi'
 
 function LaneDetails() {
   const history = useHistory();
+  const inputLength = useRef(null);
+  const inputLicensePlate = useRef(null);
 
   const [LaneActive, setLaneActive] = useState({});
   const [CanEditLength, setCanEditLength] = useState(false);
@@ -32,7 +34,8 @@ function LaneDetails() {
       }
     } else {
       if (CanEditLicensePlate) {
-        setLicensePlate(e.target.value);
+        const value = e.target.value;
+        setLicensePlate(value.toUpperCase());
       }
     }
   }
@@ -65,6 +68,20 @@ function LaneDetails() {
     localStorage.setItem("Lanes", JSON.stringify(lanes));
   }
 
+  function handleFocus(name) {
+    if (name === "length") {
+      setCanEditLength(true);
+      setTimeout(() => {
+        inputLength.current.focus();
+      }, 10);
+    } else {
+      setCanEditLicensePlate(true);
+      setTimeout(() => {
+        inputLicensePlate.current.focus();
+      }, 10);
+    }
+  }
+
 
   return (
     <Screen verticalAlign="flex-start">
@@ -78,24 +95,24 @@ function LaneDetails() {
         <div className="form">
           <div className="input-group flex ai-center">
             <label htmlFor="length">Lengte</label>
-            <input name="length" type="number" autoComplete="off" value={Length} disabled={!CanEditLength} onChange={e => handleChange(e, 'length')} />
+            <input name="length" ref={inputLength} type="number" autoComplete="off" value={Length} disabled={!CanEditLength} onChange={e => handleChange(e, 'length')} />
             {CanEditLength ?
               <>
                 <HiOutlineSave size={57} onClick={() => handleSave("length")} />
                 <MdCancel size={57} onClick={() => handleCancel("length")} />
               </>
-              : <MdEdit size={57} onClick={(e) => setCanEditLength(true)} />
+              : <MdEdit size={57} onClick={(e) => handleFocus("length")} />
             }
           </div>
           <div className="input-group flex ai-center">
             <label htmlFor="length">Kenteken</label>
-            <input name="length" type="text" value={LicensePlate} autoComplete="off" disabled={!CanEditLicensePlate} onChange={e => handleChange(e, 'licensePlate')} />
+            <input name="length" ref={inputLicensePlate} type="text" value={LicensePlate} autoComplete="off" disabled={!CanEditLicensePlate} onChange={e => handleChange(e, 'licensePlate')} />
             {CanEditLicensePlate ?
               <>
                 <HiOutlineSave size={57} onClick={() => handleSave("licensePlate")} />
                 <MdCancel size={57} onClick={() => handleCancel("licensePlate")} />
               </>
-              : <MdEdit size={57} onClick={(e) => setCanEditLicensePlate(true)} />
+              : <MdEdit size={57} onClick={(e) => handleFocus("licensePlate")} />
             }
           </div>
         </div>
