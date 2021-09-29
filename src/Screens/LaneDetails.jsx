@@ -78,7 +78,7 @@ function LaneDetails() {
         <div className="form">
           <div className="input-group flex ai-center">
             <label htmlFor="length">Lengte</label>
-            <input name="length" type="number" value={Length} disabled={!CanEditLength} onChange={e => handleChange(e, 'length')} />
+            <input name="length" type="number" autoComplete="off" value={Length} disabled={!CanEditLength} onChange={e => handleChange(e, 'length')} />
             {CanEditLength ?
               <>
                 <HiOutlineSave size={57} onClick={() => handleSave("length")} />
@@ -89,7 +89,7 @@ function LaneDetails() {
           </div>
           <div className="input-group flex ai-center">
             <label htmlFor="length">Kenteken</label>
-            <input name="length" type="text" value={LicensePlate} disabled={!CanEditLicensePlate} onChange={e => handleChange(e, 'licensePlate')} />
+            <input name="length" type="text" value={LicensePlate} autoComplete="off" disabled={!CanEditLicensePlate} onChange={e => handleChange(e, 'licensePlate')} />
             {CanEditLicensePlate ?
               <>
                 <HiOutlineSave size={57} onClick={() => handleSave("licensePlate")} />
